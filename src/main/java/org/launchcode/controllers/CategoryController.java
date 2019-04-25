@@ -2,8 +2,6 @@ package org.launchcode.controllers;
 
 
 import org.launchcode.models.Category;
-import org.launchcode.models.Cheese;
-import org.launchcode.models.CheeseType;
 import org.launchcode.models.data.CategoryDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,14 +30,14 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String displayAddCategoryForm(Model model) {
+    public String add(Model model) {
         model.addAttribute("title", "Add Category");
         model.addAttribute(new Category());
         return "category/add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddCategoryForm(@ModelAttribute @Valid Category category,
+    public String add(@ModelAttribute @Valid Category category,
                                        Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Category");
